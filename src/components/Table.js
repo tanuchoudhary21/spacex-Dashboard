@@ -13,11 +13,13 @@ const Table = ({ isLoading, title, col, launches }) => {
   const [filteredData, setFilteredData] = useState(launches);
   const [status, setStatus] = useState("all");
   const handleClose = () => setModalIsOpen(false);
+  // Here we used localstorage so that on refreshing the page the theme does not get changed to the useState initial value
   const [preferDarkMode, setPreferDarkMode] = useState(() => {
     const mode = localStorage.getItem("_tableDarkMode");
     return mode === "true" || false;
   });
 
+  // useEffect function to enable filtering functinality based on the status...
   useEffect(() => {
     console.log(status);
     setFilteredData(
@@ -30,12 +32,14 @@ const Table = ({ isLoading, title, col, launches }) => {
     );
   }, [status, launches]);
 
+  // To set the theme palette used in Table
   const theme = createMuiTheme({
     palette: {
       type: preferDarkMode ? "dark" : "light",
     },
   });
 
+  // function to handle Dark Mode changes  
   const handleDarkModeChange = () => {
     setPreferDarkMode(!preferDarkMode);
     localStorage.setItem("_tableDarkMode", !preferDarkMode);
@@ -59,6 +63,7 @@ const Table = ({ isLoading, title, col, launches }) => {
             title={title}
             columns={col}
             data={filteredData}
+            // This will open ModalCard on Row click
             onRowClick={(event, rowdata) => {
               setModalIsOpen(true);
               setLaunch(rowdata);
@@ -73,11 +78,11 @@ const Table = ({ isLoading, title, col, launches }) => {
                 zIndex: 0,
               },
             }}
+            // Actions for Filtering and DarkMode are defined...
             actions={[
               {
                 icon: () => (
                   <Select
-                    // className="select"
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     style={{ width: 100 }}

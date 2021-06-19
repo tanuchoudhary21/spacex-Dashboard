@@ -3,6 +3,7 @@ import axios from "axios";
 import Table from "./Table";
 import FormatDate from "./FormatDate";
 
+// Added Column to the table
 const comonscol = [
   { title: "Flight No.", field: "flight_number" },
   { title: "Mission", field: "mission_name" },
@@ -11,11 +12,13 @@ const comonscol = [
   {
     title: "Date",
     field: "launch_date_utc",
-    render: (row) => <FormatDate date={row.aunch_date_utc} />,
+    // Conditional rendering of date using FormatDate component so that the date is formatted
+    render: (row) => <FormatDate date={row.launch_date_utc} />,
   },
   {
     title: "Status",
     field: "launch_success",
+    // Conditional rendering of Status feild in table
     render: (row) => (
       <div
         className={
@@ -40,6 +43,7 @@ export default function Dashboard() {
   const [launches, setlaunches] = useState([]);
   const [isLoading, setIsLoading] = useState(Boolean);
 
+  // Fetched data from space-x v3 api using axios
   useEffect(() => {
     try {
       setIsLoading(true);
@@ -55,6 +59,7 @@ export default function Dashboard() {
   return (
     <>
         <div className="table-style">
+        {/* rendered Table Component */}
           <Table
             isLoading={isLoading}
             title="Space-x Table"
