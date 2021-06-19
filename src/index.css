@@ -68,6 +68,12 @@ body {
   margin-bottom: 100px;
 }
 
+.Loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .overlay {
   position: fixed;
   top: 0;
