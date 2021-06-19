@@ -1,3 +1,4 @@
+// This component is displaying Particular launch details.
 import React from "react";
 import Modal from "react-modal";
 import Button from "@material-ui/core/Button";
@@ -8,7 +9,6 @@ import { getFormattedDate, getStatusLabel } from "../utils/index";
 
 Modal.setAppElement("#root");
 function ModalCard({ modalStatus, handleClose, launch }) {
-  console.log("Launches inside Modal", launch);
   return (
     <div className="overlay">
       <Modal isOpen={modalStatus} onRequestClose={handleClose}>
@@ -87,7 +87,6 @@ function ModalCard({ modalStatus, handleClose, launch }) {
             ) : null}
             {launch.links.wikipedia ? (
               <a href={launch.links.wikipedia}>
-                {/* <Icon name="wikipedia w" /> */}
                 <LanguageIcon fontSize="large" />
               </a>
             ) : null}
