@@ -54,7 +54,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="table-container-div">
+      <div >
         <div className="table-style">
           <Table
             isLoading={isLoading}
