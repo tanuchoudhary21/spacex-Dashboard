@@ -54,7 +54,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <div >
         <div className="table-style">
           <Table
             isLoading={isLoading}
@@ -63,7 +62,6 @@ export default function Dashboard() {
             launches={launches}
           />
         </div>
-      </div>
     </>
   );
 }
